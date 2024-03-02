@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="HammerHead.GraphTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+             xmlns:local="clr-namespace:HammerHead"
+             mc:Ignorable="d" Loaded="EE"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <local:ViewModelGraph/>
+    </UserControl.DataContext>
+    <Border CornerRadius="20" Background="#f3f3f3">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="4"/>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                <lvc:CartesianChart Grid.Row="0" Margin="10" Series="{Binding Series}" XAxes="{Binding XAxes}" YAxes="{Binding YAxes}" SyncContext="{Binding Sync}" DrawMargin="{Binding Margin}" AnimationsSpeed="0:0:001" ZoomMode="Both"  TooltipPosition="Left" UpdateStartedCommand="{Binding ChartUpdatedCommand}"/>
+                <lvc:CartesianChart Grid.Row="3" Margin="10" Series="{Binding ScrollSeries}" DrawMargin="{Binding Margin}" Sections="{Binding Thumbs}" XAxes="{Binding InvisibleX}" YAxes="{Binding InvisibleY}" PointerPressedCommand="{Binding PointerDownCommand}" PointerMoveCommand="{Binding PointerMoveCommand}" PointerReleasedCommand="{Binding PointerUpCommand}" TooltipPosition="Hidden"/>
+            </Grid>
+            <GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="Black" Margin="1,10,1,10"/>
+            <Grid Grid.Column="2" Margin="10">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <ToggleButton Name="Total" Margin="10" Style="{StaticResource ToggleStyle}" HorizontalAlignment="Left" Command="{Binding ToggleSeries0Command}"/>
+                        <TextBlock Text="合計" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="25" FontFamily="Segoe UI Variable Text"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <ToggleButton Name="TCP" Margin="10" Style="{StaticResource ToggleStyle}" HorizontalAlignment="Left" Command="{Binding ToggleSeries1Command}"/>
+                        <TextBlock Text="TCP" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="25" FontFamily="Segoe UI Variable Text"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <ToggleButton Name="UDP" Margin="10" Style="{StaticResource ToggleStyle}" HorizontalAlignment="Left" Command="{Binding ToggleSeries2Command}"/>
+                        <TextBlock Text="UDP" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="25" FontFamily="Segoe UI Variable Text"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

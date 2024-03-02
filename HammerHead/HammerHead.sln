@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Blend for Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HammerHead", "HammerHead\HammerHead.csproj", "{10571488-9FF8-4325-A442-FF87BB5D0046}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10571488-9FF8-4325-A442-FF87BB5D0046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10571488-9FF8-4325-A442-FF87BB5D0046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10571488-9FF8-4325-A442-FF87BB5D0046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10571488-9FF8-4325-A442-FF87BB5D0046}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D744052-664F-480B-AF85-12006A80646E}
+	EndGlobalSection
+EndGlobal

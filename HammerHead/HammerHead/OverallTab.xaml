@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="HammerHead.OverallTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+             xmlns:local="clr-namespace:HammerHead"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <local:ViewModelOverall/>
+    </UserControl.DataContext>
+    <Border CornerRadius="20" Background="#f3f3f3">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <lvc:CartesianChart Grid.Row="0" Margin="10" TooltipPosition="Center" LegendPosition="Hidden" Series="{Binding BarSeries}" XAxes="{Binding XAxes}" YAxes="{Binding YAxes}" AnimationsSpeed="00:00:00.1"/>
+            <Grid Grid.Row="1">
+                <TextBlock Text="円グラフ位置交換" VerticalAlignment="Center" Margin="4 0 0 0" FontSize="24"/>
+                <ToggleButton x:Name="Swapper" Style="{StaticResource ToggleStyle}" Click="Swap" HorizontalAlignment="Left" Margin="192,11,0,9"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="4"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Label Content="受信" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" IsHitTestVisible="False"/>
+                    <Grid Margin="100" MouseEnter="ME" MouseLeave="ML" Panel.ZIndex="0"/>
+                    <lvc:PieChart Name="G1" Series="{Binding PieSeriesF}" AnimationsSpeed="00:00:00.1" TooltipPosition="Top"/>
+                    <lvc:PieChart Margin="100" Name="G1s" Series="{Binding PieSeriesFs}" AnimationsSpeed="00:00:00.1" TooltipPosition="Bottom"/>
+                </Grid>
+                <GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="Black" Margin="1,10,1,10"/>
+                <Grid Grid.Column="2">
+                    <Label Content="送信" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+                    <lvc:PieChart x:Name="G2" Series="{Binding PieSeriesT}" AnimationsSpeed="00:00:00.1" TooltipPosition="Top"/>
+                    <lvc:PieChart Margin="100" x:Name="G2s" Series="{Binding PieSeriesTs}" AnimationsSpeed="00:00:00.1" TooltipPosition="Bottom"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>
